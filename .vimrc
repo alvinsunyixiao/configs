@@ -58,7 +58,7 @@ let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
 let g:ctrlp_working_path_mode = 'ra'
 let g:ctrlp_max_files=0
-set wildignore+=*/build/*,*/graveyard/*,*/third_party/*,*.so,*.a
+set wildignore+=*/build/*
 
 Plugin 'mileszs/ack.vim'
 if executable('ag')
@@ -131,6 +131,7 @@ let g:go_version_warning=0
 au FileType python syn keyword pythonDecorator True None False self
 
 autocmd FileType cpp setlocal shiftwidth=2 softtabstop=2 tabstop=2 nofoldenable
+autocmd FileType c setlocal shiftwidth=2 softtabstop=2 tabstop=2 nofoldenable
 autocmd FileType cuda setlocal shiftwidth=2 softtabstop=2 tabstop=2 nofoldenable
 autocmd FileType tex setlocal shiftwidth=2 softtabstop=2 tabstop=2
 autocmd FileType html setlocal shiftwidth=2 softtabstop=2 tabstop=2
