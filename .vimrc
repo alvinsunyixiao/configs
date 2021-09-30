@@ -10,96 +10,84 @@ nnoremap <leader>t :tabnext<space>
 nnoremap <S-l> :tabnext<cr>
 nnoremap <S-h> :tabprevious<cr>
 
-set nocompatible              " be iMproved, required
-filetype off                  " required
+""""""""""""""""""
+" vim-plug start "
+""""""""""""""""""
+call plug#begin('~/.vim/plugged')
 
-" set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-" alternatively, pass a path where Vundle should install plugins
-"call vundle#begin('~/some/path/here')
+Plug 'morhetz/gruvbox'
+Plug 'itchyny/lightline.vim'
+Plug 'preservim/nerdtree'
+Plug 'Xuyuanp/nerdtree-git-plugin'
+Plug 'Valloric/YouCompleteMe'
+Plug 'nathanaelkane/vim-indent-guides'
+Plug 'tpope/vim-fugitive'
+Plug 'vim-scripts/DoxygenToolkit.vim'
+Plug 'heavenshell/vim-pydocstring', {'do': 'make install', 'for': 'python'}
+Plug 'ctrlpvim/ctrlp.vim'
+Plug 'mileszs/ack.vim'
+Plug 'pangloss/vim-javascript'
+Plug 'leafgarland/typescript-vim'
+Plug 'MaxMEllon/vim-jsx-pretty'
+Plug 'tikhomirov/vim-glsl'
+Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
+Plug 'lervag/vimtex'
 
-" let Vundle manage Vundle, required
-Plugin 'VundleVim/Vundle.vim'
+call plug#end()
+filetype plugin on
+""""""""""""""""
+" vim-plug end "
+""""""""""""""""
 
-Plugin 'morhetz/gruvbox'
-
-Plugin 'itchyny/lightline.vim'
-
-Plugin 'preservim/nerdtree'
-Plugin 'Xuyuanp/nerdtree-git-plugin'
+" Nerdtree
 map <leader>nn :NERDTreeToggle<cr>
 map <leader>nf :NERDTreeFind<cr>
 let g:NERDTreeWinPos = "right"
 
-Plugin 'Valloric/YouCompleteMe'
+" YCM
 let g:ycm_confirm_extra_conf = 0
 
-Plugin 'nathanaelkane/vim-indent-guides'
+" Indent guide
 let g:indent_guides_guide_size = 1
 let g:indent_guides_enable_on_vim_startup = 1
 
-Plugin 'tpope/vim-fugitive'
-
-Plugin 'vim-scripts/DoxygenToolkit.vim'
-
-Plugin 'heavenshell/vim-pydocstring'
+" Pydocstring
+let g:pydocstring_doq_path = '~/.virtualenvs/doq/bin/doq'
 let g:pydocstring_enable_mapping = 0
 let g:pydocstring_formatter = 'google'
 
-Plugin 'heavenshell/vim-jsdoc'
-
-Plugin 'iamcco/markdown-preview.vim'
-
-Plugin 'suan/vim-instant-markdown', {'rtp': 'after'}
-
-Plugin 'ctrlpvim/ctrlp.vim'
+" CtrlP
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
 let g:ctrlp_working_path_mode = 'ra'
 let g:ctrlp_max_files=0
 set wildignore+=*/build/*
 
-Plugin 'mileszs/ack.vim'
+" Ack / ag
 if executable('ag')
     let g:ackprg = 'ag --vimgrep'
 endif
 
-Plugin 'pangloss/vim-javascript'
-Plugin 'leafgarland/typescript-vim'
-Plugin 'MaxMEllon/vim-jsx-pretty'
+" tmux color
+let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+set termguicolors
 
-Plugin 'tikhomirov/vim-glsl'
+" spell check color
+let g:gruvbox_guisp_fallback='bg'
 
-call vundle#end()            " required
-filetype plugin indent on    " required
-" To ignore plugin indent changes, instead use:
-"filetype plugin on
-"
-" Brief help
-" :PluginList       - lists configured plugins
-" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
-" :PluginSearch foo - searches for foo; append `!` to refresh local cache
-" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
-"
-" see :h vundle for more details or wiki for FAQ
-" Put your non-Plugin stuff after this line
-
+" Custom Configs
 set number
 colorscheme gruvbox
 syntax on
 set background=dark
 set completeopt-=preview
-set colorcolumn=100
+set colorcolumn=80,100
 set cmdheight=1
 set backspace=eol,start,indent
 set lazyredraw
 set magic
 set history=500
-" tmux color
-let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
-let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
-set termguicolors
 " search
 set smartcase
 set ignorecase
@@ -122,6 +110,8 @@ set undofile
 " folding
 set foldcolumn=1
 set foldmethod=syntax
+" spell-check
+
 " remove trailing white space on save
 autocmd FileType c,cpp,cuda,css,javascript,python,tex,yaml autocmd BufWritePre * %s/\s\+$//e
 
@@ -133,7 +123,7 @@ au FileType python syn keyword pythonDecorator True None False self
 autocmd FileType cpp setlocal shiftwidth=2 softtabstop=2 tabstop=2 nofoldenable
 autocmd FileType c setlocal shiftwidth=2 softtabstop=2 tabstop=2 nofoldenable
 autocmd FileType cuda setlocal shiftwidth=2 softtabstop=2 tabstop=2 nofoldenable
-autocmd FileType tex setlocal shiftwidth=2 softtabstop=2 tabstop=2
+autocmd FileType tex setlocal shiftwidth=2 softtabstop=2 tabstop=2 spell 
 autocmd FileType html setlocal shiftwidth=2 softtabstop=2 tabstop=2
 autocmd FileType css setlocal shiftwidth=2 softtabstop=2 tabstop=2
 autocmd FileType javascript setlocal shiftwidth=2 softtabstop=2 tabstop=2
@@ -144,11 +134,6 @@ autocmd FileType python setlocal shiftwidth=4 softtabstop=4 tabstop=4 nofoldenab
 autocmd BufNewFile,BufFilePre,BufRead *.tpp set filetype=cpp
 autocmd BufNewFile,BufFilePre,BufRead *.lcm set filetype=cpp
 
-inoremap        (    ()<Left>
-inoremap        (<CR>  (<CR>)<Esc>O
-inoremap        ((   (
-inoremap <expr> )    strpart(getline('.'), col('.')-1, 1) == ")" ? "\<Right>" : ")"
-
 inoremap <expr> <BS> Delete()
 function! Delete()
     let check_p = strpart(getline('.'), col('.')-2, 2)
@@ -158,6 +143,11 @@ function! Delete()
         return "\<BS>"
 endfunction
 
+inoremap        (    ()<Left>
+inoremap        (<CR>  (<CR>)<Esc>O
+inoremap        ((   (
+inoremap <expr> )    strpart(getline('.'), col('.')-1, 1) == ")" ? "\<Right>" : ")"
+
 inoremap        [   []<Left>
 inoremap        [[  [
 inoremap <expr> ]  strpart(getline('.'), col('.')-1, 1) == "]" ? "\<Right>" : "]"
@@ -166,5 +156,4 @@ inoremap        {      {}<Left>
 inoremap        {<CR>  {<CR>}<Esc>O
 inoremap        {{     {
 inoremap <expr> }  strpart(getline('.'), col('.')-1, 1) == "}" ? "\<Right>" : "}"
-
 
