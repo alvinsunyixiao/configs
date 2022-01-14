@@ -68,6 +68,13 @@ if executable('ag')
     let g:ackprg = 'ag --vimgrep'
 endif
 
+" vimtex
+let g:vimtex_quickfix_open_on_warning=0
+if !exists('g:ycm_semantic_triggers')
+let g:ycm_semantic_triggers = {}
+endif
+au VimEnter * let g:ycm_semantic_triggers.tex=g:vimtex#re#youcompleteme
+
 " tmux color
 let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
 let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
