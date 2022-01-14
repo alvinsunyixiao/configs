@@ -32,6 +32,8 @@ Plug 'MaxMEllon/vim-jsx-pretty'
 Plug 'tikhomirov/vim-glsl'
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
 Plug 'lervag/vimtex'
+Plug 'tomlion/vim-solidity'
+Plug 'iden3/vim-circom-syntax'
 
 call plug#end()
 filetype plugin on
@@ -46,6 +48,7 @@ let g:NERDTreeWinPos = "right"
 
 " YCM
 let g:ycm_confirm_extra_conf = 0
+let g:ycm_python_binary_path = 'python'
 
 " Indent guide
 let g:indent_guides_guide_size = 1
@@ -120,7 +123,7 @@ set foldmethod=syntax
 " spell-check
 
 " remove trailing white space on save
-autocmd FileType c,cpp,cuda,css,javascript,python,tex,yaml autocmd BufWritePre * %s/\s\+$//e
+autocmd FileType c,cpp,cuda,css,javascript,python,tex,yaml,solidity autocmd BufWritePre * %s/\s\+$//e
 
 let g:go_version_warning=0
 
@@ -130,7 +133,8 @@ au FileType python syn keyword pythonDecorator True None False self
 autocmd FileType cpp setlocal shiftwidth=2 softtabstop=2 tabstop=2 nofoldenable
 autocmd FileType c setlocal shiftwidth=2 softtabstop=2 tabstop=2 nofoldenable
 autocmd FileType cuda setlocal shiftwidth=2 softtabstop=2 tabstop=2 nofoldenable
-autocmd FileType tex setlocal shiftwidth=2 softtabstop=2 tabstop=2 spell 
+autocmd FileType tex setlocal shiftwidth=2 softtabstop=2 tabstop=2 spell
+autocmd FileType text setlocal spell 
 autocmd FileType html setlocal shiftwidth=2 softtabstop=2 tabstop=2
 autocmd FileType css setlocal shiftwidth=2 softtabstop=2 tabstop=2
 autocmd FileType javascript setlocal shiftwidth=2 softtabstop=2 tabstop=2
