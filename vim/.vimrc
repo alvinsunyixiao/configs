@@ -19,7 +19,8 @@ Plug 'morhetz/gruvbox'
 Plug 'itchyny/lightline.vim'
 Plug 'preservim/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
-Plug 'Valloric/YouCompleteMe'
+Plug 'ycm-core/YouCompleteMe'
+Plug 'ycm-core/lsp-examples'
 Plug 'nathanaelkane/vim-indent-guides'
 Plug 'tpope/vim-fugitive'
 Plug 'vim-scripts/DoxygenToolkit.vim'
@@ -34,6 +35,7 @@ Plug 'iamcco/markdown-preview.nvim', { 'do': ':call mkdp#util#install()', 'for':
 Plug 'lervag/vimtex'
 Plug 'tomlion/vim-solidity'
 Plug 'iden3/vim-circom-syntax'
+Plug 'JuliaEditorSupport/julia-vim'
 
 call plug#end()
 filetype plugin on
@@ -49,6 +51,7 @@ let g:NERDTreeWinPos = "right"
 " YCM
 let g:ycm_confirm_extra_conf = 0
 let g:ycm_python_binary_path = 'python'
+source $HOME/.vim/plugged/lsp-examples/vimrc.generated
 
 " Indent guide
 let g:indent_guides_guide_size = 1
@@ -132,6 +135,7 @@ au FileType python syn keyword pythonDecorator True None False self
 autocmd FileType cpp setlocal shiftwidth=2 softtabstop=2 tabstop=2 nofoldenable
 autocmd FileType c setlocal shiftwidth=2 softtabstop=2 tabstop=2 nofoldenable
 autocmd FileType cuda setlocal shiftwidth=2 softtabstop=2 tabstop=2 nofoldenable
+autocmd FileType julia setlocal shiftwidth=2 softtabstop=2 tabstop=2 nofoldenable
 autocmd FileType tex setlocal shiftwidth=2 softtabstop=2 tabstop=2 spell
 autocmd FileType text setlocal spell 
 autocmd FileType html setlocal shiftwidth=2 softtabstop=2 tabstop=2
