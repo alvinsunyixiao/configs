@@ -19,7 +19,7 @@ Plug 'morhetz/gruvbox'
 Plug 'itchyny/lightline.vim'
 Plug 'preservim/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
-Plug 'ycm-core/YouCompleteMe'
+Plug 'ycm-core/YouCompleteMe', {'do': 'python3 install.py --clangd-completer'}
 Plug 'ycm-core/lsp-examples'
 Plug 'nathanaelkane/vim-indent-guides'
 Plug 'tpope/vim-fugitive'
@@ -51,7 +51,11 @@ let g:NERDTreeWinPos = "right"
 " YCM
 let g:ycm_confirm_extra_conf = 0
 let g:ycm_python_binary_path = 'python'
-source $HOME/.vim/plugged/lsp-examples/vimrc.generated
+let g:ycm_clangd_uses_ycmd_caching = 0
+let g:ycm_clangd_args = ['--query-driver', '/usr/bin/c++']
+if filereadable(expand('$HOME/.vim/plugged/lsp-examples/vimrc.generated'))
+    source $HOME/.vim/plugged/lsp-examples/vimrc.generated
+endif
 
 " Indent guide
 let g:indent_guides_guide_size = 1
