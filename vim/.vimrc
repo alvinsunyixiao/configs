@@ -20,7 +20,7 @@ Plug 'itchyny/lightline.vim'
 Plug 'preservim/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'ycm-core/YouCompleteMe', {'do': 'python3 install.py --clangd-completer'}
-Plug 'ycm-core/lsp-examples'
+Plug 'ycm-core/lsp-examples', {'do': 'python3 install.py --enable-julia'}
 Plug 'nathanaelkane/vim-indent-guides'
 Plug 'tpope/vim-fugitive'
 Plug 'vim-scripts/DoxygenToolkit.vim'
@@ -50,9 +50,11 @@ let g:NERDTreeWinPos = "right"
 
 " YCM
 let g:ycm_confirm_extra_conf = 0
-let g:ycm_python_binary_path = 'python'
+let g:ycm_python_binary_path = 'python3'
+" Let clangd fully control code completion
 let g:ycm_clangd_uses_ycmd_caching = 0
-let g:ycm_clangd_args = ['--query-driver', '/usr/bin/c++']
+" Use installed clangd, not YCM-bundled clangd which doesn't get updates.
+let g:ycm_clangd_args = ['--header-insertion=never']
 if filereadable(expand('$HOME/.vim/plugged/lsp-examples/vimrc.generated'))
     source $HOME/.vim/plugged/lsp-examples/vimrc.generated
 endif
