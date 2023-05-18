@@ -65,7 +65,6 @@ let g:indent_guides_enable_on_vim_startup = 1
 
 " Pydocstring
 let g:pydocstring_enable_mapping = 0
-let g:pydocstring_formatter = 'google'
 
 " CtrlP
 let g:ctrlp_map = '<c-p>'
