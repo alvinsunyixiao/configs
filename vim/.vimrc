@@ -85,6 +85,9 @@ let g:ycm_semantic_triggers = {}
 endif
 au VimEnter * let g:ycm_semantic_triggers.tex=g:vimtex#re#youcompleteme
 
+" julia-vim
+let g:latex_to_unicode_file_types = ["julia", "python"]
+
 " tmux color
 let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
 let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
