@@ -151,10 +151,12 @@ autocmd FileType css setlocal shiftwidth=2 softtabstop=2 tabstop=2
 autocmd FileType javascript setlocal shiftwidth=2 softtabstop=2 tabstop=2
 autocmd FileType typescript setlocal shiftwidth=2 softtabstop=2 tabstop=2
 autocmd FileType yaml setlocal shiftwidth=2 softtabstop=2 tabstop=2
+autocmd FileType xml setlocal shiftwidth=2 softtabstop=2 tabstop=2
 autocmd FileType python setlocal shiftwidth=4 softtabstop=4 tabstop=4 nofoldenable
 
 autocmd BufNewFile,BufFilePre,BufRead *.tpp set filetype=cpp
 autocmd BufNewFile,BufFilePre,BufRead *.lcm set filetype=cpp
+autocmd BufNewFile,BufFilePre,BufRead *.sdf set filetype=xml
 
 inoremap <expr> <BS> Delete()
 function! Delete()
