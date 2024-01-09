@@ -54,7 +54,7 @@ let g:ycm_python_binary_path = 'python3'
 " Let clangd fully control code completion
 let g:ycm_clangd_uses_ycmd_caching = 0
 " Use installed clangd, not YCM-bundled clangd which doesn't get updates.
-let g:ycm_clangd_args = ['--header-insertion=never']
+let g:ycm_clangd_args = ['--header-insertion=never', '--query-driver=/usr/bin/c++']
 if filereadable(expand('$HOME/.vim/plugged/lsp-examples/vimrc.generated'))
     source $HOME/.vim/plugged/lsp-examples/vimrc.generated
 endif
